@@ -20,7 +20,7 @@ Resources:
       Architectures:
         - x86_64
   FunctionB:
-    Type: AWS::Severless::Function
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambdaB/
       Handler: lambdaB.lambdaHandler
