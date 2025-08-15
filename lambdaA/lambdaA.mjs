@@ -18,7 +18,7 @@ export const lambdaHandler = async (event, context) => {
         message: 'This is lambda A',
       })
     };
- 
+
     return response;
   };
   

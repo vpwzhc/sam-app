@@ -17,14 +17,29 @@ Resources:
     Properties:
       VersioningConfiguration:
         Status: Enabled
-  FunctionA:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        
+FunctionA:
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambdaA/
       Handler: lambdaA.lambdaHandler
       Runtime: nodejs22.x
-      Architectures:
-        - x86_64
+      Architectures: [x86_64]
+      Events:
+        S3ObjectCreated:
+          Type: S3
+          Properties:
+            Bucket: !Ref S3Bucket
+            Events:
+              - s3:ObjectCreated:*  
+      EventInvokeConfig:          
+        MaximumRetryAttempts: 2
+        MaximumEventAgeInSeconds: 3600
+        DestinationConfig:
+          OnSuccess:
+            Type: Lambda
+            Destination: !GetAtt FunctionB.Arn
+        
   FunctionB:
     Type: AWS::Serverless::Function
     Properties:
@@ -35,4 +50,10 @@ Resources:
         - x86_64
 
  
+  AllowDestinationInvokeB:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref FunctionB
+      Principal: lambda.amazonaws.com
 
