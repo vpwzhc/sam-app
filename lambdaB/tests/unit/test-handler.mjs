@@ -1,6 +1,6 @@
 'use strict';
 
-import { lambdaHandler } from '../../app.mjs';
+import { lambdaHandler } from '../../lambdaB.mjs';
 import { expect } from 'chai';
 var event, context;
 
@@ -15,6 +15,6 @@ describe('Tests index', function () {
         let response = JSON.parse(result.body);
 
         expect(response).to.be.an('object');
-        expect(response.message).to.be.equal("hello world");
+        expect(response.message).to.be.equal("This is lambda B");
     });
 });
