@@ -18,6 +18,8 @@ export const lambdaHandler = async (event, context) => {
         message: 'This is lambda A',
       })
     };
+    
+    console.log("THIS IS LAMBDA A")
 
     return response;
   };
