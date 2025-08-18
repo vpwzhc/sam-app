@@ -3,13 +3,11 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   sam-app
 
-  Sample SAM Template for sam-app
   
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
     Timeout: 3
-
+ 
 Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
