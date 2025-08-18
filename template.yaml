@@ -52,3 +52,5 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref FunctionB
       Principal: lambda.amazonaws.com
+      
+      

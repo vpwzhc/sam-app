@@ -12,14 +12,7 @@
  */
 
 export const lambdaHandler = async (event, context) => {
-    const response = {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: 'This is lambda A',
-      })
-    };
-    
-    console.log("THIS IS LAMBDA A")
+    const response = "hi"
 
     return response;
   };
